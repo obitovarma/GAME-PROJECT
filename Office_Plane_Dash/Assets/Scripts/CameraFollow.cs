@@ -8,6 +8,13 @@ public class CameraFollow : MonoBehaviour
     void LateUpdate()
     {
         transform.position = player.position + offset;
+
+        // Set the camera's rotation to match the player's rotation
+        transform.rotation = player.rotation;
+
+        // Rotate the camera by 90 degrees on the Y-axis
+        transform.Rotate(Vector3.up, 90f * Time.deltaTime);
+
         transform.LookAt(player.position);
     }
 }
