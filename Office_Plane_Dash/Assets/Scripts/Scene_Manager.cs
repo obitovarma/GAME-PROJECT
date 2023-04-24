@@ -16,7 +16,7 @@ public class Scene_Manager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    
+
     public void Ad_level()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

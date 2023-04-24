@@ -14,7 +14,7 @@ public class Boost_up : MonoBehaviour
     {
         if (other.gameObject.tag == "BoostUp" && !isBoosting)
         {
-            // Trigger the boost when the Space key is pressed and the paper plane is not already boosting
+      
             StartBoost();
         }
 
@@ -43,11 +43,15 @@ public class Boost_up : MonoBehaviour
 
         // Move the paper plane upwards by the specified height during the boost
         transform.position += -transform.right * boostHeight;
+        
+
     }
 
     private void StopBoost()
     {
         // Stop the boost by setting the isBoosting flag to false
         isBoosting = false;
+      
+
     }
 }
