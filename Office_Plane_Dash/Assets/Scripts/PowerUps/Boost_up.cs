@@ -1,57 +1,47 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Boost_up : MonoBehaviour
 {
-    public float normalSpeed = 5f;          // Normal speed of the paper plane
-    public float boostedSpeed = 15f;        // Boosted speed of the paper plane
-    public float boostDuration = 3f;        // Duration of the boost in seconds
-    public float boostHeight = 10f;         // Height of the boost in units
+    // Attach this script to the powerup object
 
-    private bool isBoosting = false;        // Flag to track if the paper plane is currently boosting
-    private float boostTimer = 0f;          // Timer to track the duration of the boost
+    // Set this value in the editor to determine the strength of the boost
+    public float boostStrength = 10f;
+
+    // This is the duration of the boost effect in seconds
+    public float boostDuration = 2f;
+
+    // This variable keeps track of whether the powerup has been collected
+    private bool collected = false;
+
+    // This is a reference to the player object
+    public GameObject player;
 
     void OnTriggerEnter(UnityEngine.Collider other)
     {
-        if (other.gameObject.tag == "BoostUp" && !isBoosting)
+        if (other.gameObject.tag == "Player")
         {
-      
-            StartBoost();
+            collected = true;
+            player = other.gameObject;
+            StartCoroutine(BoostPlayer());
         }
-
-        if (isBoosting)
-        {
-            // Update the boost timer while the paper plane is boosting
-            boostTimer += Time.deltaTime;
-
-            if (boostTimer >= boostDuration)
-            {
-                // Stop the boost when the boost duration is over
-                StopBoost();
-            }
-        }
-
-        // Move the paper plane forward with the appropriate speed
-        float currentSpeed = isBoosting ? boostedSpeed : normalSpeed;
-        transform.position += transform.forward * currentSpeed * Time.deltaTime;
     }
 
-    private void StartBoost()
+    IEnumerator BoostPlayer()
     {
-        // Start the boost by setting the isBoosting flag to true and resetting the boost timer
-        isBoosting = true;
-        boostTimer = 0f;
+        // Apply the boost effect
+        player.GetComponent<Rigidbody>().AddForce(Vector3.up * boostStrength, ForceMode.Impulse);
 
-        // Move the paper plane upwards by the specified height during the boost
-        transform.position += -transform.right * boostHeight;
-        
+        // Wait for the duration of the boost effect
+        yield return new WaitForSeconds(boostDuration);
 
+        // Reset the player's velocity
+        player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        // Destroy the powerup object
+        Destroy(gameObject);
     }
 
-    private void StopBoost()
-    {
-        // Stop the boost by setting the isBoosting flag to false
-        isBoosting = false;
-      
-
-    }
 }
+
