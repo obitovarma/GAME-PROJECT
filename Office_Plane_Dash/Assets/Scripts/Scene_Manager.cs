@@ -7,13 +7,15 @@ public class Scene_Manager : MonoBehaviour
 {
     public void Reload()
     {
-        string currentScene = SceneManager.GetActiveScene().name;
-        SceneManager.LoadScene(currentScene);
-    }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
-    public void Level_2()
+        Time.timeScale = 1;
+    }
+    
+   
+    public void Level_Main_menu()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Main_Menu");
     }
 
 
@@ -26,4 +28,13 @@ public class Scene_Manager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
     }
+    public void Pause_menu()
+    {
+        Time.timeScale = 0; 
+    }
+    public void Resume_game()
+    {
+        Time.timeScale = 1;
+    }
 }
+
