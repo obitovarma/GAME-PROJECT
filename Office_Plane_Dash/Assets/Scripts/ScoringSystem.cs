@@ -5,7 +5,7 @@ public class ScoringSystem : MonoBehaviour
 {
     public Transform playerTransform;
     public TMP_Text scoreText;
-    public float scoreMultiplier = 1f;
+    public float scoreMultiplier = 0.5f;
 
     private float startingZ;
     private float distanceTravelled;
