@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class CoinCollector : MonoBehaviour
 {
-    public int coinValue = 10; // The amount of score added when the coin is collected
+    
+    public int CoinValue = 10; // The amount of score added when the coin is collected
     public AudioClip coinSound; // The sound effect to play when the coin is collected
     public AudioSource audioSource; // The audio source to play the sound effect
 
