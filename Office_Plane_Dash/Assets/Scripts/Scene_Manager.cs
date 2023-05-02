@@ -5,7 +5,16 @@ using UnityEngine;
 
 public class Scene_Manager : MonoBehaviour
 {
-    public void Reload()
+    
+    public string levelName;
+
+    public void LoadLevel()
+    {
+        SceneManager.LoadScene(levelName);
+    }
+
+
+  public void Reload()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 

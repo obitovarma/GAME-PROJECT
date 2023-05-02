@@ -5,6 +5,9 @@ public class ScoringSystem : MonoBehaviour
 {
     public Transform playerTransform;
     public TMP_Text scoreText;
+    public TMP_Text scoreText_crash;
+    public TMP_Text scoreText_Pause;
+    public TMP_Text scoreText_Complete;
     public float scoreMultiplier = 1f;
 
     private float startingZ;
@@ -26,5 +29,8 @@ public class ScoringSystem : MonoBehaviour
 
         // Update score display
         scoreText.text = "Score: " + score.ToString();
+        scoreText_crash.text = "Score: " + score.ToString();
+        scoreText_Pause.text = "Score: " + score.ToString();
+        scoreText_Complete.text = "Score: " + score.ToString();
     }
 }
