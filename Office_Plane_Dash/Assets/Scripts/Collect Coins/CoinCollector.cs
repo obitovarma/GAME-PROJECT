@@ -3,22 +3,22 @@ using TMPro;
 public class CoinCollector : MonoBehaviour
 {
     
-    private int CoinValue ; // The amount of score added when the coin is collected
-    public AudioClip coinSound; // The sound effect to play when the coin is collected
-    public AudioSource audioSource; // The audio source to play the sound effect
+    private int CoinValue ; 
+    public AudioClip coinSound; 
+    public AudioSource audioSource;
     public TMP_Text CoinText;
     void OnTriggerEnter(UnityEngine.Collider other)
     {
         if (other.CompareTag("Coins"))
         {
             CoinValue++;
-            // Play the coin sound effect
+            
             if (coinSound != null && audioSource != null)
             {
                 audioSource.PlayOneShot(coinSound);
             }
 
-            // Destroy the coin GameObject
+           
             Destroy(other.gameObject);
         }
 
