@@ -17,7 +17,7 @@ public class Move : MonoBehaviour
 
             if (touch.phase == TouchPhase.Moved)
             {
-                // Invert the x direction of the touch input to move the object in the opposite direction
+                // touch input to move the object in the X axis
                 transform.position = new Vector3(
                     transform.position.x - touch.deltaPosition.x * speedModifier,
                     transform.position.y,

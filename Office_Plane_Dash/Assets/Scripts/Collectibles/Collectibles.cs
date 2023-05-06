@@ -6,6 +6,8 @@ using UnityEngine.Events;
 public class Collectibles: MonoBehaviour
 {
     public int collectiblesNeeded = 10;
+    public AudioClip CollSound;
+    public AudioSource audioSource;
     public UnityEvent onCollectiblesCollected1;
     public UnityEvent onCollectiblesCollected2;
     public UnityEvent onCollectiblesCollected3;
@@ -20,6 +22,7 @@ public class Collectibles: MonoBehaviour
         if (other.gameObject.CompareTag("Collectibles"))
         {
             // The player has collided with a collectible
+            audioSource.PlayOneShot(CollSound);
             collectiblesCollected++;
             Destroy(other.gameObject);
 
